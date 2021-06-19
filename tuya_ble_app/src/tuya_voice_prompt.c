@@ -2,8 +2,8 @@
  * @Author: zzw
  * @email: huanling.zhang@tuya.com
  * @LastEditors: zzw
- * @file name: voice_prompt.c
- * @Description: ÓïÒô²¥±¨¹¦ÄÜÊµÏÖ(WTN6ÏµÁĞÓïÒôĞ¾Æ¬£¬ Ò»Ïß´®¿ÚÍ¨Ñ¶)
+ * @file name: tuya_voice_prompt.c
+ * @Description: è¯­éŸ³æ’­æŠ¥åŠŸèƒ½å®ç°(WTN6ç³»åˆ—è¯­éŸ³èŠ¯ç‰‡ï¼Œ ä¸€çº¿ä¸²å£é€šè®¯)
  * @Copyright: HANGZHOU TUYA INFORMATION TECHNOLOGY CO.,LTD
  * @Company: http://www.tuya.com
  * @Date: 2021-04-22
@@ -11,8 +11,8 @@
  *
  */
 
-#include "voice_prompt.h"
-#include "massage_system.h"
+#include "tuya_voice_prompt.h"
+
 
 void voice_prompt_init(void)
 {
@@ -23,26 +23,26 @@ void voice_prompt_init(void)
     gpio_write(WTN6_BUSY_PIN, 0);
 }
 
-void voice_playing(uint8_t sb_data)      //è¾“å…¥å‚æ•°sb_dataä¸ºWTN6å¯¹åº”çš„è¯­éŸ³åœ°å€
+void voice_playing(uint8_t sb_data)
 {
 	uint8_t s_data, j;
 	bool b_data;
 	s_data = sb_data;
 	gpio_write(WTN6_DATA_PIN, 0);
-	sleep_us(5000);		//ÑÓÊ± 5ms
+	sleep_us(5000);		//å»¶æ—¶ 5ms
 	b_data = s_data & 0X01;
 
 	for (j=0; j<8; j++) {
 		if (b_data == 1) {
 			gpio_write(WTN6_DATA_PIN, 1);
-			sleep_us(600); //ÑÓÊ± 600us
+			sleep_us(600); //å»¶æ—¶ 600us
 			gpio_write(WTN6_DATA_PIN, 0);
-			sleep_us(200); //ÑÓÊ± 200us
+			sleep_us(200); //å»¶æ—¶ 200us
 		} else {
 			gpio_write(WTN6_DATA_PIN, 1);
-			sleep_us(200); //ÑÓÊ± 200us
+			sleep_us(200); //å»¶æ—¶ 200us
 			gpio_write(WTN6_DATA_PIN, 0);
-			sleep_us(600); //ÑÓÊ± 600us
+			sleep_us(600); //å»¶æ—¶ 600us
 		}
 			s_data = s_data >> 1;
 			b_data = s_data & 0X01;

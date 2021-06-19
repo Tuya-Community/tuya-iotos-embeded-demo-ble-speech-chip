@@ -2,7 +2,7 @@
  * @Author: zzw
  * @email: huanling.zhang@tuya.com
  * @LastEditors: zzw
- * @file name: voice_prompt.h
+ * @file name: tuya_voice_prompt.h
  * @Description: 语音播报功能实现(WTN6系列语音芯片， 一线串口通讯)
  * @Copyright: HANGZHOU TUYA INFORMATION TECHNOLOGY CO.,LTD
  * @Company: http://www.tuya.com
@@ -11,8 +11,8 @@
  *
  */
 
-#ifndef VOICE_PROMPT_H_
-#define VOICE_PROMPT_H_
+#ifndef TUYA_VOICE_PROMPT_H_
+#define TUYA_VOICE_PROMPT_H_
 
 #include "tuya_ble_common.h"
 #include "tuya_ble_log.h"
